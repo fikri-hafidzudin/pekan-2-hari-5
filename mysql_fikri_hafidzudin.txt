@@ -1,0 +1,69 @@
+TUGAS PEKAN 2 HARI 5
+BERLATIH SQL
+ 
+SOAL 1
+
+CREATE DATABASE myshop;
+
+SOAL 2
+
+MariaDB [myshop]> create table user (
+    -> id int primary key auto_increment,
+    -> name varchar(255),
+    -> email varchar(255),
+    -> password varchar(255)
+    -> );
+
+MariaDB [myshop]>  create table items (
+    -> id int auto_increment primary key,
+    -> name varchar(255),
+    -> description varchar(255),
+    -> price int,
+    -> stock int,
+    -> category_id int
+    -> );
+
+MariaDB [myshop]> create table categories (
+    -> id int auto_increment primary key,
+    -> name varchar(255)
+    -> );
+
+MariaDB [myshop]> alter table items add foreign key (category_id) references categories(id);
+
+SOAL3
+
+MariaDB [myshop]> insert into user (name, email, password) values ('John Doe', 'john@doe.com', 'john1
+23');
+
+MariaDB [myshop]> insert into user (name, email, password) values ('Jane Doe', 'jane@doe.com', 'jenit
+a123');
+
+MariaDB [myshop]> insert into categories (name) values ('gadget');
+
+MariaDB [myshop]> insert into categories (name) values ('cloth');
+
+MariaDB [myshop]> insert into categories (name) values ('men');
+
+MariaDB [myshop]> insert into categories (name) values ('women');
+
+MariaDB [myshop]> insert into categories (name) values ('branded');
+
+MariaDB [myshop]> insert into items (name, description, price, stock, category_id) value ('Sumsang b50', 'hape keren dari merek sumsang', '4000000', '100', '1');
+
+MariaDB [myshop]> insert into items (name, description, price, stock, category_id) value ('Uniklooh', 'baju keren dari brand ternama', '500000', '50', '2');
+
+MariaDB [myshop]> insert into items (name, description, price, stock, category_id) value ('IMHO Watch', 'jam tangan anak yagn jujur banget', '2000000', '10', '1');
+
+SOAL 4
+
+A. MariaDB [myshop]> select id, name, email from user;
+
+B. MariaDB [myshop]> select * from items where price >1000000;
+
+   MariaDB [myshop]> select * from items where name like '%watch%';
+
+C. MariaDB [myshop]> select items.*, categories.id from items, categories       where items.category_id=categories.id
+
+SOAL 5
+
+MariaDB [myshop]> update `items` SET `price` = '2500000' where `items`.`name` like '%sumsang%';
